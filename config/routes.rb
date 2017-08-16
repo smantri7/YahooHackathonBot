@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root 'main_page#top'
+
+  get '/' => 'main_page#top'
   
   get 'main_page/top' => 'main_page#top'
 
