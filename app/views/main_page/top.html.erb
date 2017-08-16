@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>TNM</title>
+    <%= stylesheet_link_tag "top", media: "all" %>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    
+   </head>
+<body>
+
+<div class="header">
+<div class="rogo"><font size="6"><font face="Impact">TNW</font></font></div>
+
+
+<li><a href=""a { text-decoration: none; }>使い方</a></li>
+<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="【ページのURL】" data-text="【ツイート本文】" data-via="【ユーザ名】" data-size="【ボタンのサイズ】" data-related="【ユーザ名】" data-count="【カウント表示の種類】" data-hashtags="【ハッシュタグ】">共有</a> </li>
+
+
+</div>
+<div class="main">
+<h1>THE NEW ME</h1>
+
+</div>
+
+
+<footer>
+
+<p><B><font size="5">あなたの過去のツイートから分析して、アバターがあなたの好きそうなことを提案します</font></B></p>
+<h2>あなたの日常を180度変えます！！！</h2>
+<div class="e">
+<img src= <%= asset_path('e.png') %> alt="サンプル" width="300" height="500" align="top">
+</div>
+<div class="p1">
+<p>あなたの過去のツイートから、アバターがあなたの好きそうな<span style="color: #2EFE2E">場所</span>、<span style="color: #FFBF00">遊び</span>、<span style="color: #CC2EFA">食べ物</span>を提案します！</p>
+</div>
+
+<div class="p2">
+<p>アバターの提案が気に入らないとき、<span style="color: #0000FF">違う自分を見つける！』ボタン</span>『を押すと他の提案をしてくれます</p>
+</div>
+<div class="p3">
+<p><span style="color: #0000FF">背景変更</span>を押すと、背景色を変えることができます！自分の好きな色やアバターに合った色を設定しよう！</p>
+</div>	
+
+<form action="/main_page/index">
+ツイッターのユーザーネームを入力してください！(例：@name123) <input type="text" name="username" required>
+<div class="botan">
+<button type="submit" >
+<img src= <%= asset_path('botan.png') %> width="300" height="100" >
+</form>
+<br>
+</div>
+</button>
+</footer>
+</body>
+
+<style>
+
+</style>
+
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta charset="utf-8">
+	<title>TNM</title>
+	<%= stylesheet_link_tag "rest", media: "all" %>
+    <%= stylesheet_link_tag "stylesheet", media: "all" %>
+
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="title">TMN</div>
+			<ul>
+				<li><a href="">説明</a></li>
+				<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="【ページのURL】" data-text="【ツイート本文】" data-via="【ユーザ名】" data-size="【ボタンのサイズ】" data-related="【ユーザ名】" data-count="【カウント表示の種類】" data-hashtags="【ハッシュタグ】">Tweet</a> 
+				</li>
+				<li><a href="">お問い合わせ</a></li>
+			</ul>
+		</div>
+		<div class="contents">
+			<div class="imgs">
+				<figure class="relative1">
+				<div class="h huki1">
+					<img src= <%= asset_path('hukidasi1.jpg') %> class="huki1-img" height="200" width="300">
+					<figcaption class="ab absolute1"><%= @j.recPlace()%></figcaption>
+				</div>
+				</figure>
+				<figure class="relative2">
+				<div class="huki huki2">
+					<img src=<%= asset_path('hukidasi2.jpg') %> height="200" width="300">
+					<figcaption class="ab absolute2"><%= @j.recInterest()%></figcaption>
+				</div>
+				</figure>
+				<div class="h huki img">
+					<img src=<%= asset_path('hikaru.jpg') %>  alt="写真" width="250" height="300">
+				</div>
+				<figure class="relative3">
+				<div class="h huki3">
+					<img src=<%= asset_path('hukidasi3.jpg') %> height="200" width="300">
+					<figcaption class="ab absolute3"><%= @j.recFood()%></figcaption>
+				</div>
+				</figure>
+			</div>
+			<div class="btn">
+			    <input class="contact-submit sub1" type="submit" value="違う自分を見つける！" onclick="window.location.reload()">
+				<input class="contact-submit sub2" type="submit" value="背景の色を変える！">
+			</div>
+		</div>
+		<div class="footer">
+			<div class="footermessage">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
