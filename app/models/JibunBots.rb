@@ -18,12 +18,10 @@ class JibunBots
 		#interests
 		@shumiDict = setInterests()
 		@shumiList = []
-		#likes
-		@likes = []
-		#hates
-		@hates = []
-		@posScore = 0.0
-		@negScore = 0.0
+
+
+		#Interesting info
+		@wordbank = {}
 	end
 
 	def tokenize()
@@ -139,6 +137,11 @@ class JibunBots
 			@foodDict.keys.each do |key|
 				@foodDict[key].each do |value|
 					if word == key or word == value
+						if @wordbank.keys.include?(key)
+							@wordbank[key] += 1
+						else
+							@wordbank[key] = 1
+						end
 						ans << word
 					end
 				end
@@ -176,6 +179,11 @@ class JibunBots
 			@shumiDict.keys.each do |key|
 				@shumiDict[key].each do |value|
 					if word == key or word == value
+						if @wordbank.keys.include?(key)
+							@wordbank[key] += 1
+						else
+							@wordbank[key] = 1
+						end
 						ans << word
 					end
 				end
@@ -234,6 +242,11 @@ class JibunBots
 			@placeDict.keys.each do |key|
 				@placeDict[key].each do |value|
 					if word == key or word == value
+						if @wordbank.keys.include?(key)
+							@wordbank[key] += 1
+						else
+							@wordbank[key] = 1
+						end
 						ans << word
 					end
 				end
@@ -287,6 +300,17 @@ class JibunBots
 			interestsAnalysis(sentence)
 			placeAnalysis(sentence)
 		end
+	end
+
+	def getCommonWords()
+		best = @wordbank.sort_by { |_, v| -v }.first(5).map(&:first)
+		puts(best)
+		ans = "よく使ってる言葉： "
+		bns = ""
+		best.each do |key|
+			bns += key + ": " + @wordbank[key].to_s + "回 "
+		end
+		return ans + bns
 	end
 
 	def fileToList(file)

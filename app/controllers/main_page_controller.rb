@@ -21,4 +21,7 @@ class MainPageController < ApplicationController
     @j.analyze()
     #puts(j.generateRandomComment(30))
   end
+
+  def chat
+  end
 end
