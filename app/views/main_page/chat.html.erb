@@ -1,5 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<%= include_gon %>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 <script type="text/javascript">
 // jQuery Document
@@ -14,8 +15,7 @@ $(document).ready(function(){
  
 <div id="wrapper">
     <div id="menu">
-        <p class="welcome">Welcome, <b></b></p>
-        <p class="logout"><a id="exit" href="#">Exit Chat</a></p>
+        <p class="welcome">ようこそ, <%= @username %> <b></b></p>
         <div style="clear:both"></div>
     </div>
      

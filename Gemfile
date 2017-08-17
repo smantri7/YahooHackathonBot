@@ -30,6 +30,10 @@ gem 'tiny_segmenter'
 
 gem 'twitter'
 
+gem 'gon'
+
+gem 'yahoo-japanese-analysis'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

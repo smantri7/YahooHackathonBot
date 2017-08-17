@@ -6,7 +6,6 @@
 	<title>TNM</title>
 	<%= stylesheet_link_tag "rest", media: "all" %>
     <%= stylesheet_link_tag "stylesheet", media: "all" %>
-
 </head>
 <body>
 	<div class="container">
@@ -45,7 +44,7 @@
 			</div>
 			<div class="btn">
 			    <input class="contact-submit sub1" type="submit" value="違う自分を見つける！" onclick="window.location.reload()">
-				<input class="contact-submit sub2" type="submit" value="背景の色を変える！">
+			    <%= button_to '背景の色を変える！', {:controller => "main_page", :action => "chat", :username => @username} , {class: 'contact-submit sub2'} %>
 			</div>
 		</div>
 		<div class="footer">

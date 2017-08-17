@@ -1,4 +1,5 @@
 require "tiny_segmenter"
+require 'yahoo-japanese-analysis'
 class JibunBots
 
 	def initialize(username, zenbu)
@@ -281,8 +282,15 @@ class JibunBots
 		end			
 	end
 
-	def conversation()
-		puts("TODO")
+	def conversation(inp)
+		#check for key commands: #food #place #shumi
+		if inp == "#food"
+			return recFood()
+		elsif inp == "#place" 
+			return recPlace()
+		elsif inp == "#shumi" 
+			return recInterest()
+		end
 	end
 
 	def getKey(val, dict)
