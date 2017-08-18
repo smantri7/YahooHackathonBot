@@ -275,11 +275,18 @@ class JibunBots
 		sentence.each do |word|
 			@placeDict.keys.each do |key|
 				@placeDict[key].each do |value|
-					if word == key or word == value
+					if word == key
 						if @wordbank.keys.include?(key)
 							@wordbank[key] += 1
 						else
 							@wordbank[key] = 1
+						end
+						ans << word
+					elsif word == value
+						if @wordbank.keys.include?(value)
+							@wordbank[value] += 1
+						else
+							@wordbank[value] = 1
 						end
 						ans << word
 					end
