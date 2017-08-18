@@ -23,13 +23,15 @@ class TwitterRequest
 			all_tweets += new_tweets
 			prev = oldest
 			oldest = all_tweets.last.id - 1
+			if all_tweets.length >= 2000
+				break
+			end
 		end
 		text = ""
 
 		all_tweets.each do |tweet|
 			text += preprocess(tweet.text)
 		end
-		puts(text)
 		return text
 	end
 
