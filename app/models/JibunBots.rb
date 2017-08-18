@@ -346,6 +346,7 @@ class JibunBots
 		elsif @greetings.include?(inp)
 			return inp.to_s + "、" + @username + "ちゃん！"
 		elsif @bye.include?(inp)
+			ran = rand(@bye.length)
 			return  @bye[ran] + "、" + @username + "ちゃん！"
 		end
 
