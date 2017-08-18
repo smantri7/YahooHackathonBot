@@ -170,11 +170,13 @@ class JibunBots
 		sentence.each do |word|
 			@foodDict.keys.each do |key|
 				@foodDict[key].each do |value|
-					if word == key or word == value
-						if @wordbank.keys.include?(key)
-							@wordbank[key] += 1
+					if word == key
+						ans << word
+					elsif word == value
+						if @wordbank.keys.include?(value)
+							@wordbank[value] += 1
 						else
-							@wordbank[key] = 1
+							@wordbank[value] = 1
 						end
 						ans << word
 					end
@@ -212,11 +214,13 @@ class JibunBots
 		sentence.each do |word|
 			@shumiDict.keys.each do |key|
 				@shumiDict[key].each do |value|
-					if word == key or word == value
-						if @wordbank.keys.include?(key)
-							@wordbank[key] += 1
+					if word == key
+						ans << word
+					elsif word == value
+						if @wordbank.keys.include?(value)
+							@wordbank[value] += 1
 						else
-							@wordbank[key] = 1
+							@wordbank[value] = 1
 						end
 						ans << word
 					end
@@ -276,11 +280,6 @@ class JibunBots
 			@placeDict.keys.each do |key|
 				@placeDict[key].each do |value|
 					if word == key
-						if @wordbank.keys.include?(key)
-							@wordbank[key] += 1
-						else
-							@wordbank[key] = 1
-						end
 						ans << word
 					elsif word == value
 						if @wordbank.keys.include?(value)

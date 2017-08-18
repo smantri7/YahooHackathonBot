@@ -19,10 +19,14 @@ class MainPageController < ApplicationController
       m.message = tweets
       m.save!
     end
-    @j = JibunBots.new(@username, Message.where(:username => @username).first.message)
-    @j.analyze()
-    session[:username] = @username
-    session[:bot] = @j
+    if session[:bot].nil?
+      @j = JibunBots.new(@username, Message.where(:username => @username).first.message)
+      @j.analyze()
+      session[:username] = @username
+      session[:bot] = @j
+    else
+      @j = session[:bot]
+    end
     @food =  @j.recPlace()
     @place = @j.recFood()
     @shumi = @j.recInterest()
