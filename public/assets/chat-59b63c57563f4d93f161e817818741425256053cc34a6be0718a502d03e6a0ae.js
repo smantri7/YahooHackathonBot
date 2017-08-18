@@ -20,3 +20,4 @@ $("#submitmsg").click(function(){
 	});
   });
 })
+;

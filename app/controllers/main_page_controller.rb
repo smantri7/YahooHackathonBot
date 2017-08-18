@@ -30,11 +30,10 @@ class MainPageController < ApplicationController
 
   def create
     message = params[:comment]
-    j = JibunBots.new(@username, Message.where(:username => params[:username]).first.message)
+    j = JibunBots.new(params[:username], Message.where(:username => params[:username]).first.message)
     j.analyze()
     ans = j.conversation(message)
     respond_to do |format|
-      puts("GOT HERE")
       format.json {render json: {"resp" => ans}}
     end
   end

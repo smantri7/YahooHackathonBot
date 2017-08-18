@@ -5,14 +5,24 @@
 <script type="text/javascript">
 // jQuery Document
 $(document).ready(function(){
- 
+ $("#usermsg").keyup(function(event){
+    if(event.keyCode == 13){
+        console.log("PRSSED")
+        $("#submitmsg").click();
+    }
+});
 });
 </script>
 <title>Chat - Customer Module</title>
 <%= stylesheet_link_tag "chat", media: "all" %>
+<%= stylesheet_link_tag "top", media: "all" %>
 <%= javascript_include_tag 'chat' %>
 </head>
- 
+ <ul>
+	<li class="header-list"><a class="header-a" href="/main_page/top">使い方</a></li>
+	<li class="header-list"><a class="header-a" href="/main_page/index">NEW ME</a></li>
+	
+</ul>
 <div id="wrapper">
     <div id="menu">
         <p class="welcome">ようこそ, <%= @username %> <b></b></p>
@@ -25,6 +35,21 @@ $(document).ready(function(){
      
     <input name="usermsg" type="text" id="usermsg" size="63" />
     <input name="submitmsg" type="submit"  id="submitmsg" value="Send" />
+</div>
+
+<div>
+    <p>使い方：自分ボットは自分の性格を反映している！気軽に話してみてください！</p>
+    <p>例："おはよう" -> "おはよう、ほげちゃん！"</p>
+    <p>このコマンドもあって、つかってみてください！</p>
+    <li>#food - 食べ物をおすすめする</li>
+    <li>#place - 場所をおすすめする</li>
+    <li>#shumi - 趣味をおすすめする</li>
+    <li>#time - 今の時間が見える</li>
+    <li>#face - 面白い顔が表示される</li>
+    <li>#hope - 公理が表示される</li>
+    <li>#random - あなたみたいな文を表示される</li>
+    <li>#common - あなたがよく使ってる言葉を表示される</li>
+    <li>#commands - 全部のコマンドを見える</li>
 </div>
 </body>
 </html>

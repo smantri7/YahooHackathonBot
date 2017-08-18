@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  *= require top
- *= require stylesheet
- *= require rest
- *= require main
+ *= require style
+ *= require chat
  */

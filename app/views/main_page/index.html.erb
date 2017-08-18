@@ -1,56 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-	 <meta name="viewport" content="width=device-width,initial-scale=1">
-	<meta charset="utf-8">
-	<title>TNM</title>
-	<%= stylesheet_link_tag "rest", media: "all" %>
-    <%= stylesheet_link_tag "stylesheet", media: "all" %>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<meta name="description" content="サイトの説明文を入れてください。">
+<meta name="keyword" content="キーワード1,キーワード2,キーワード3">
+<title>TNM</title>
+<%= stylesheet_link_tag "style", media: "all" %>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </head>
+
 <body>
-	<div class="container">
-		<div class="header">
-			<div class="title">TMN</div>
-			<ul>
-				<li><a href="">説明</a></li>
-				<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="【ページのURL】" data-text="【ツイート本文】" data-via="【ユーザ名】" data-size="【ボタンのサイズ】" data-related="【ユーザ名】" data-count="【カウント表示の種類】" data-hashtags="【ハッシュタグ】">Tweet</a> 
-				</li>
-				<li><a href="">お問い合わせ</a></li>
-			</ul>
-		</div>
-		<div class="contents">
-			<div class="imgs">
-				<figure class="relative1">
-				<div class="h huki1">
-					<img src= <%= asset_path('hukidasi1.jpg') %> class="huki1-img" height="200" width="300">
-					<figcaption class="ab absolute1"><%= @j.recPlace()%></figcaption>
-				</div>
-				</figure>
-				<figure class="relative2">
-				<div class="huki huki2">
-					<img src=<%= asset_path('hukidasi2.jpg') %> height="200" width="300">
-					<figcaption class="ab absolute2"><%= @j.recInterest()%></figcaption>
-				</div>
-				</figure>
-				<div class="h huki img">
-					<img src=<%= asset_path('hikaru.jpg') %>  alt="写真" width="250" height="300">
-				</div>
-				<figure class="relative3">
-				<div class="h huki3">
-					<img src=<%= asset_path('hukidasi3.jpg') %> height="200" width="300">
-					<figcaption class="ab absolute3"><%= @j.recFood()%></figcaption>
-				</div>
-				</figure>
-			</div>
-			<div class="btn">
-			    <input class="contact-submit sub1" type="submit" value="違う自分を見つける！" onclick="window.location.reload()">
-			    <%= button_to '背景の色を変える！', {:controller => "main_page", :action => "chat", :username => @username} , {class: 'contact-submit sub2'} %>
-			</div>
-		</div>
-		<div class="footer">
-			<div class="footermessage">
-			</div>
-		</div>
-	</div>
+<!-- ヘッダここから -->
+<header>
+<div id="box_t">
+<h2 id="top">T N M</h2>
+</div>
+<div id="menu">
+<nav>
+<ul>
+	<li class="header-list"><a class="header-a" href="/main_page/top">使い方</a></li>
+	<li class="header-list"><a class="header-a" href="">NEW ME</a></li>
+	
+</ul>
+</nav>
+</div>
+</header>
+<!-- /ヘッダここまで -->
+
+<p id="intro">
+	新しいあなたを見つけます!
+</p>
+
+<!-- カテゴリここから -->
+<div id="catebox">
+	<ul class="clearfix">
+	<li><div class="wrapper">
+            <div class="box1">
+            	<div class="box1-text"><%= @j.recInterest()%></div> 
+            </div>
+        </div>
+    </li>
+    <li><div class="wrapper">
+            <div class="box2">
+             	<div class="box1-text"><%= @j.recFood()%></div>  
+            </div>
+        </div>
+    </li>
+	<li>
+		<div class="imgs"><a href="category1.html"><img src= <%= asset_path('sample.jpeg') %> width="85" height="85" alt="カテゴリ３"></a></div>
+	</li>
+	<li><div class="wrapper">
+            <div class="box3">
+             	<div class="box1-text"><%= @j.recPlace()%></div>  
+            </div>
+        </div>
+    </li>
+	</ul>
+</div>
+<!-- /カテゴリここまで -->
+
+<!-- 広告ここから -->
+<p class="ad"><a href="#" class="square_btn" onclick="window.location.reload()">新しい自分を探す</a>
+<%= button_to '自分ボットとチャットする！', {:controller => "main_page", :action => "chat", :username => @username} , {class: 'square_btn'} %> 
+<!-- /広告ここまで -->
+
+
+
+<!-- フッタここから -->
+<footer>
+<div id="footer">
+<p class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="【ページのURL】" data-text="【ツイート本文】" data-via="【ユーザ名】" data-size="【ボタンのサイズ】" data-related="【ユーザ名】" data-count="【カウント表示の種類】" data-hashtags="【ハッシュタグ】">Tweet</a>
+</p>
+</div>
+</footer>
+<!-- /フッタここまで -->
+
 </body>
 </html>

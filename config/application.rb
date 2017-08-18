@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module JibunBot
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.time_zone = 'Tokyo'
     config.load_defaults 5.1
     #config.assets.initialize_on_precompile = false
     config.assets.initialize_on_precompile = false
