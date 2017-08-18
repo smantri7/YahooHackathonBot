@@ -144,19 +144,19 @@ class JibunBots
 			r = rand(@foodDict.keys.length)
 			key = @foodDict.keys[r]
 			q = rand(@foodDict[key].length)
-			return "あなたの食べ物がよくわからんけど、" + @foodDict[key][q] + "を食べてみて～！"
+			return "好きな食べ物がよくわからんけど、" + @foodDict[key][q] + "を食べてみて～！"
 		end
 		ran = rand(@foodList.length)
 		like = @foodList[ran]
 		if @foodDict.keys.include?(like)
-			a = "あなたは" + like + "が好きだよね！"
+			a = like + "が好きだよね！"
 			r = rand(@foodDict[like].length)
 			b = "じゃあ、" + @foodDict[like][r] + "を食べてみて～！"
 			return a + b
 		else
 			key = getKey(like, @foodDict)
 			r = rand(@foodDict[key].length)
-			return "あなたは" + like + "が好きだから、" + @foodDict[key][r] + "を食べてみて～！"
+			return like + "が好きだから、" + @foodDict[key][r] + "を食べてみて～！"
 		end
 	end
 
@@ -236,19 +236,19 @@ class JibunBots
 			r = rand(@shumiDict.keys.length)
 			key = @shumiDict.keys[r]
 			q = rand(@shumiDict[key].length)
-			return "あなたの趣味がよくわからんけど、" + @shumiDict[key][q] + "をやってみて～！"
+			return "好きな趣味がよくわからんけど、" + @shumiDict[key][q] + "をやってみて～！"
 		end
 		ran = rand(@shumiList.length)
 		like = @shumiList[ran]
 		if @shumiDict.keys.include?(like)
-			a = "あなたは" + like + "が好きだよね！"
+			a = like + "が好きだよね！"
 			r = rand(@shumiDict[like].length)
 			b = "じゃあ、" + @shumiDict[like][r] + "をやってみて～！"
 			return a + b
 		else
 			key = getKey(like, @shumiDict)
 			r = rand(@shumiDict[key].length)
-			return "あなたは" + like + "が好きだから、" + @shumiDict[key][r] + "をやってみて～！"
+			return like + "が好きだから、" + @shumiDict[key][r] + "をやってみて～！"
 		end	
 	end
 
@@ -299,19 +299,19 @@ class JibunBots
 			r = rand(@placeDict.keys.length)
 			key = @placeDict.keys[r]
 			q = rand(@placeDict[key].length)
-			return "あなたの場所がよくわからんけど、" + @placeDict[key][q] + "に行ってみて～！"
+			return "好きな場所がよくわからんけど、" + @placeDict[key][q] + "に行ってみて～！"
 		end
 		ran = rand(@placeList.length)
 		like = @placeList[ran]
 		if @placeDict.keys.include?(like)
-			a = "あなたは" + like + "が好きだよね！"
+			a = like + "が好きだよね！"
 			r = rand(@placeDict[like].length)
 			b = "じゃあ、" + @placeDict[like][r] + "に行ってください！"
 			return a + b
 		else
 			key = getKey(like, @placeDict)
 			r = rand(@placeDict[key].length)
-			return "あなたは" + like + "が好きだから、" + @placeDict[key][r] + "に行ってみて～！"
+			return like + "が好きだから、" + @placeDict[key][r] + "に行ってみて～！"
 		end			
 	end
 

@@ -20,7 +20,14 @@ class MainPageController < ApplicationController
   	#start up the jibun bot, get results
     @j = JibunBots.new(@username, Message.where(:username => @username).first.message)
     @j.analyze()
-    #puts(j.generateRandomComment(30))
+
+    @food =  @j.recPlace()
+    @place = @j.recFood()
+    @shumi = @j.recInterest()
+    aList = [@food, @place, @shumi]
+    ran = rand(aList.length)
+    @name = @username[1..@username.length]
+    @twitter_comment =  @username + "さんの結果：" + aList[ran] + "面白いね！あなたの夏休みもレベルアップしよう!"
   end
 
   def chat

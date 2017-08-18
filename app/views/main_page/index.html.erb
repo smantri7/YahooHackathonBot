@@ -37,22 +37,22 @@
 	<ul class="clearfix">
 	<li><div class="wrapper">
             <div class="box1">
-            	<div class="box1-text"><%= @j.recInterest()%></div> 
+            	<div class="box1-text"> <%= @food %></div> 
             </div>
         </div>
     </li>
     <li><div class="wrapper">
             <div class="box2">
-             	<div class="box1-text"><%= @j.recFood()%></div>  
+             	<div class="box1-text"><%= @place %></div>  
             </div>
         </div>
     </li>
 	<li>
-		<div class="imgs"><a href="category1.html"><img src= <%= asset_path('sample.jpeg') %> width="85" height="85" alt="カテゴリ３"></a></div>
+		<div class="imgs"><a href=""><img src= <%= asset_path('sample.jpeg') %> width="85" height="85" alt="カテゴリ３"></a></div>
 	</li>
 	<li><div class="wrapper">
             <div class="box3">
-             	<div class="box1-text"><%= @j.recPlace()%></div>  
+             	<div class="box1-text"><%= @shumi %></div>  
             </div>
         </div>
     </li>
@@ -70,7 +70,7 @@
 <!-- フッタここから -->
 <footer>
 <div id="footer">
-<p class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="【ページのURL】" data-text="【ツイート本文】" data-via="【ユーザ名】" data-size="【ボタンのサイズ】" data-related="【ユーザ名】" data-count="【カウント表示の種類】" data-hashtags="【ハッシュタグ】">Tweet</a>
+<p class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="https://jibunbot.herokuapp.com/" data-text= <%= @twitter_comment %> data-size="【ボタンのサイズ】" data-related=<%= @name %> data-count="【カウント表示の種類】" data-hashtags="jibunbot">ツイート</a>
 </p>
 </div>
 </footer>
