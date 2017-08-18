@@ -36,6 +36,8 @@ gem 'yahoo-japanese-analysis'
 
 gem "rack-timeout"
 
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

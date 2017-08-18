@@ -3,13 +3,26 @@ require 'JibunBots'
 
 class MainPageController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :set_variables, only: [:index, :chat, :create]
 
   def top
   end
 
   def index
-    set_variables()
+    @username = params[:username]
+    #start up the jibun bot, get results
+    if Message.where(:username => @username).first.nil?
+      #twitterAnalysis
+      tr = TwitterRequest.new(@username)
+      tweets = tr.getComments()
+      m = Message.new()
+      m.username = @username
+      m.message = tweets
+      m.save!
+    end
+    @j = JibunBots.new(@username, Message.where(:username => @username).first.message)
+    @j.analyze()
+    session[:username] = @username
+    session[:bot] = @j
     @food =  @j.recPlace()
     @place = @j.recFood()
     @shumi = @j.recInterest()
@@ -21,30 +34,15 @@ class MainPageController < ApplicationController
   end
 
   def chat
-    gon.username = @username
+    gon.username = params[:username]
   end
 
   def create
     message = params[:comment]
-    ans = @j.conversation(message)
+    bot = session[:bot]
+    ans = bot.conversation(message)
     respond_to do |format|
       format.json {render json: {"resp" => ans}}
     end
-  end
-
-  def set_variables
-    @username = params[:username]
-    if Message.where(:username => @username).first.nil?
-      #twitterAnalysis
-      tr = TwitterRequest.new(@username)
-      tweets = tr.getComments()
-      m = Message.new()
-      m.username = @username
-      m.message = tweets
-      m.save!
-    end
-    #start up the jibun bot, get results
-    @j = JibunBots.new(@username, Message.where(:username => @username).first.message)
-    @j.analyze()
   end
 end
