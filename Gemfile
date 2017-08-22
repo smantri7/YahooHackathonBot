@@ -36,7 +36,7 @@ gem 'yahoo-japanese-analysis'
 
 gem "rack-timeout"
 
-gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+gem 'activerecord-session_store'
 
 gem 'easy_translate'
 
