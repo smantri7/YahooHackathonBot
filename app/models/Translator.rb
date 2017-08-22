@@ -22,6 +22,3 @@ class Translator
 		end
 	end
 end
-
-t = Translator.new
-t.write_to_file()
