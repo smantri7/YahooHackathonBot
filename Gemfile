@@ -36,8 +36,6 @@ gem 'yahoo-japanese-analysis'
 
 gem "rack-timeout"
 
-gem 'activerecord-session_store'
-
 gem 'easy_translate'
 
 # Use Redis adapter to run Action Cable in production
