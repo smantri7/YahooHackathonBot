@@ -38,6 +38,8 @@ gem "rack-timeout"
 
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
+gem 'easy_translate'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

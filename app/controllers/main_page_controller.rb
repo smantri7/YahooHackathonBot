@@ -19,19 +19,14 @@ class MainPageController < ApplicationController
       m.message = tweets
       m.save!
     end
-    if session[:bot].nil?
-      @j = JibunBots.new(@username, Message.where(:username => @username).first.message)
-      @j.analyze()
-      session[:username] = @username
-      session[:bot] = @j
-    else
-      @j = session[:bot]
-    end
+    @j = JibunBots.new(@username, Message.where(:username => @username).first.message)
+    @j.analyze()
     @food =  @j.recPlace()
     @place = @j.recFood()
     @shumi = @j.recInterest()
     aList = [@food, @place, @shumi]
     ran = rand(aList.length)
+    puts(@j.get_all())
     @name = @username[1..@username.length]
     @twitter_comment =  @username + "さんの結果：" + aList[ran] + "面白いね！あなたの夏休みもレベルアップしよう!"
     #puts(j.generateRandomComment(30))

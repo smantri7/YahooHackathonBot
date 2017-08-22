@@ -26,6 +26,11 @@ class JibunBots
 		@greetings = ["おはよう", "おはようございます", "こんにちは", "こんばんは", "ヘロー", "おは"]
 		@bye = ["失礼します", "じゃね", "またね", "じゃまた", "バイバイ"]
 
+
+		#sentiment analysis
+		@current = {}
+		@sentimap = sentisetup()
+
 		YahooJA.configure do |config|
   			config.app_key = 'dj00aiZpPXFDREplS1NyR09rSyZzPWNvbnN1bWVyc2VjcmV0Jng9NzM-'
 		end
@@ -167,7 +172,11 @@ class JibunBots
 	def foodAnalysis(sentence)
 		ans = []
 		sentence = tokenize_input(sentence)
+		total = 0.0
+		instances = 0
 		sentence.each do |word|
+			total += @sentimap[word].nil? ? 0 : @sentimap[word]
+			instances += @sentimap[word].nil? ? 0 : 1
 			@foodDict.keys.each do |key|
 				@foodDict[key].each do |value|
 					if word == key
@@ -187,6 +196,15 @@ class JibunBots
 		ans.each do |food|
 			if !@foodList.include?(food)
 				@foodList << food
+				if instances > 0
+					sentiment = total/instances
+					if @current[food].nil?
+						@current[food] = sentiment
+					else
+						tots = @current[food] + sentiment
+						@current[food] = tots/2
+					end
+				end
 			end
 		end
 	end
@@ -211,7 +229,11 @@ class JibunBots
 	def interestsAnalysis(sentence)
 		ans = []
 		sentence = tokenize_input(sentence)
+		total = 0.0
+		instances = 0
 		sentence.each do |word|
+			total += @sentimap[word].nil? ? 0 : @sentimap[word]
+			instances += @sentimap[word].nil? ? 0 : 1
 			@shumiDict.keys.each do |key|
 				@shumiDict[key].each do |value|
 					if word == key
@@ -231,6 +253,15 @@ class JibunBots
 		ans.each do |shumi|
 			if !@shumiList.include?(shumi)
 				@shumiList << shumi
+				if instances > 0
+					sentiment = total/instances
+					if @current[shumi].nil?
+						@current[shumi] = sentiment
+					else
+						tots = @current[shumi] + sentiment
+						@current[shumi] = tots/2
+					end
+				end
 			end
 		end		
 	end
@@ -276,7 +307,11 @@ class JibunBots
 	def placeAnalysis(sentence)
 		ans = []
 		sentence = tokenize_input(sentence)
+		total = 0.0
+		instances = 0
 		sentence.each do |word|
+			total += @sentimap[word].nil? ? 0 : @sentimap[word]
+			instances += @sentimap[word].nil? ? 0 : 1
 			@placeDict.keys.each do |key|
 				@placeDict[key].each do |value|
 					if word == key
@@ -296,6 +331,15 @@ class JibunBots
 		ans.each do |place|
 			if !@placeList.include?(place)
 				@placeList << place
+				if instances > 0
+					sentiment = total/instances			
+					if @current[place].nil?
+						@current[place] = sentiment
+					else
+						tots = @current[place] + sentiment
+						@current[place] = tots/2
+					end
+				end
 			end
 		end			
 	end
@@ -403,6 +447,25 @@ class JibunBots
 			interestsAnalysis(sentence)
 			placeAnalysis(sentence)
 		end
+		preprocess()
+	end
+
+	def preprocess()
+		@current.keys.each do |key|
+			if @current[key] < 0
+				if @foodList.include?(key)
+					@foodList.delete_at(@foodList.index(key))
+				elsif @placeList.include?(key)
+					@placeList.delete_at(@placeList.index(key))
+				elsif @shumiList.include?(key)
+					@shumiList.delete_at(@shumiList.index(key))
+				end
+			end
+		end
+	end
+
+	def get_all()
+		return @current
 	end
 
 	def getCommonWords()
@@ -413,6 +476,19 @@ class JibunBots
 			bns += key + ": " + @wordbank[key].to_s + "回 "
 		end
 		return ans + bns
+	end
+
+	def sentisetup()
+		pName = Rails.root.to_s + "/app/assets/data/jp.txt"
+		reader = File.open(pName, "r:UTF-8")
+		aDict = {}
+		reader.each_line do |line|
+			splitter = line.split(" ")
+			value = splitter[0][0..splitter[0].length - 2].to_f
+			key = splitter[1]
+			aDict[key] = value
+		end
+		return aDict
 	end
 
 	def fileToList(file)
