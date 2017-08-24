@@ -26,7 +26,7 @@ class MainPageController < ApplicationController
     @shumi = @j.recInterest()
     aList = [@food, @place, @shumi]
     ran = rand(aList.length)
-    picList = ["a.jpg", "b.jpg", "c.jpg", "d.jpg", "e.jpg", "g.jpg"]
+    picList = ["a.png", "b.png", "c.png", "d.png", "e.png", "g.png"]
     rander = rand(picList.length)
     @src = picList[rander]
     @name = @username[1..@username.length]
