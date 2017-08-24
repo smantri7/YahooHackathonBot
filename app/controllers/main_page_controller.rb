@@ -26,7 +26,9 @@ class MainPageController < ApplicationController
     @shumi = @j.recInterest()
     aList = [@food, @place, @shumi]
     ran = rand(aList.length)
-    puts(@j.get_all())
+    picList = ["a.jpg", "b.jpg", "c.jpg", "d.jpg", "e.jpg", "g.jpg"]
+    rander = rand(picList.length)
+    @src = picList[rander]
     @name = @username[1..@username.length]
     @twitter_comment =  @username + "さんの結果：" + aList[ran] + "面白いね！あなたの夏休みもレベルアップしよう!"
     #puts(j.generateRandomComment(30))
