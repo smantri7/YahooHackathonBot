@@ -32,6 +32,7 @@ Rails.application.configure do
   config.serve_static_assets = false
   config.assets.compress = true
   config.assets.digest = true
+  config.action_controller.session_store = :active_record_store
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 

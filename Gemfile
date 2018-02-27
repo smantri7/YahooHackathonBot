@@ -38,6 +38,8 @@ gem "rack-timeout"
 
 gem 'easy_translate'
 
+gem 'activerecord-session_store'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

@@ -31,6 +31,8 @@ class MainPageController < ApplicationController
     @src = picList[rander]
     @name = @username[1..@username.length]
     @twitter_comment =  @username + "さんの結果：" + aList[ran] + "面白いね！あなたの夏休みもレベルアップしよう!"
+    session[:username] = @username
+    session[:bot] = @j
     #puts(j.generateRandomComment(30))
   end
 
